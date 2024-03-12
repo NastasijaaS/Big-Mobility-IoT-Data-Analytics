@@ -40,7 +40,7 @@ def task1(spark, args):
     timeTask1 = time.time()
 
     data_path, latitude_point, longitude_point, proximity_size, timeMin, timeMax = args[:6]
-    vehicle_type = None if len(args) < 7 else args[6] 
+    vehicle_type = None if len(args) < 7 else args[6]  
     
     df = spark.read.option("header", "true").option("delimiter", ";").csv(data_path, inferSchema=True)
 
@@ -84,9 +84,8 @@ if __name__ == "__main__":
         sys.exit(-1)
     
     appName="Project1"
-    
-    conf = SparkConf()
 
+    conf = SparkConf()
     conf.setMaster("spark://spark-master:7077")
     #conf.setMaster("local")
 
